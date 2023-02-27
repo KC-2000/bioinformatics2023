@@ -1,0 +1,9 @@
+cd /home/test/linux
+wc -l test_command.gtf
+wc -c test_command.gtf
+grep 'chr_' test_command.gtf |grep -w 'YDL248W'
+sed 's/chr_/chromosome_/g' test_command.gtf | cut -f 1,3,4,5
+awk '{temp = $2; $2 = $3; $3 = temp; print $0}' test_command.gtf |sort -k 4 -k 5 -n >result.gtf
+chmod 774 test_command.gtf
+ls -lh
+exit

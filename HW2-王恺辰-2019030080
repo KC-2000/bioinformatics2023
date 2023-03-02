@@ -1,0 +1,5 @@
+cat 1.gtf | grep -w 'XI'|grep -w 'CDS'| sort -nk 5 | tail -n 10
+cat 1.gtf | grep -w 'IV'| awk '{print $3}'|sort | uniq -c| sort -nk 1
+cat 1.gtf | grep -v 'IV'| grep -w 'CDS'| awk '$7=="-"{print $5-$4+1}'| sort -n | tail -n 2
+cat 1.gtf |grep -w 'XV'| awk '$3 == "gene"{split($10,x,";");name = x[1];gsub("\"", "", name);print name,$5-$4+1}' | sort -nk 2 |tail -n 5
+grep -v '^#' 1.gtf| head -n 1| awk '{print NF}'
